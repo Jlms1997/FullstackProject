@@ -1,0 +1,22 @@
+{
+  "name": "fullstackproject",
+  "version": "1.0.0",
+  "description": "proyecto fullstack mrc el que lo lea",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jlms1997/FullstackProject.git"
+  },
+  "author": "yo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jlms1997/FullstackProject/issues"
+  },
+  "homepage": "https://github.com/Jlms1997/FullstackProject#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
