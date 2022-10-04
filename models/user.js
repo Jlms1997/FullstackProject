@@ -27,7 +27,11 @@ const usrSchema = new Schema({
 	password:{
 		type: String,
 		required:true
-	}
+	},
+    highscore:{
+        type: Number,
+        default: [0]
+    }
 	
 }, { timestamps: true } ).set('toJSON',{
     transform: (document, object) => {

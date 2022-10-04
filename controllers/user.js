@@ -20,6 +20,7 @@ const addUser = async (name,lastname,email,isActive,password) => {
                 email: email,
                 isActive:isActive,
                 password:cryptoPass
+                
             }
         );
 
