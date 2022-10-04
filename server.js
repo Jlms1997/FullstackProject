@@ -10,7 +10,7 @@ const uri = process.env.MONGO_URI;
 
 const UsrController = require('./controllers/user');
 const AuthController = require('./controllers/auth');
-const Middleware = require('./middleware/auth-middleware.js');
+//const Middleware = require('./middleware/auth-middleware.js');
 
 
 mongoose
@@ -29,7 +29,7 @@ app.get("/", (req, res) => {
   res.send("Hola estoy funcionando.");
 });
 
-// Get de todos los usuarios
+// Get de todos los usuarios por orden de highscore
 app.get("/users",async (req,res) =>{
 
   let limit = req.query.limit;
@@ -137,10 +137,12 @@ app.delete("/users/:id", async(req,res) =>{
     }
 });
 
+// Editar el highscore
+
 app.put("/users/:id/highscore",async (req,res) =>{
     
   const highscore = req.body.highscore;
-  //const user = { _id: req.params.id, ...req.body };
+
   try{
     
     const result = await UsrController.editHighscore(req.params.id,highscore);
@@ -154,10 +156,11 @@ app.put("/users/:id/highscore",async (req,res) =>{
   } 
 })
 
+// Editar roles
+
 app.put("/users/:id/roles",async (req,res) =>{
     
     const roles = req.body.roles;
-    //const user = { _id: req.params.id, ...req.body };
     try{
       
       const result = await UsrController.editRoles(roles,req.params.id);
@@ -170,6 +173,8 @@ app.put("/users/:id/roles",async (req,res) =>{
        res.status(500).send("Error");
     } 
 })
+
+// Login 
 
 app.post("/auth/login", async (req,res) => {
 

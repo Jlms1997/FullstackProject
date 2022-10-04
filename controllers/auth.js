@@ -17,10 +17,9 @@ const login = async(email,password) => {
             email:email,
             password:password,
         }
-        // retorno token
-        //jwt.sign('payload','secret_key','options')
-         const token = jwt.sign( data, jwt_key );    
-        //const token = "fgdgbrfeer6g1df23g86ef2gs";
+
+         const token = jwt.sign( data, jwt_key );
+             
         return token;
     }
     return null; // retorno 

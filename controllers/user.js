@@ -20,8 +20,7 @@ const addUser = async (name,lastname,email,isActive,password,highscore) => {
                 email: email,
                 isActive:isActive,
                 password:cryptoPass,
-                highscore: highscore
-
+                highscore: highscore,
             }
         );
 
@@ -41,8 +40,6 @@ const getAllUsers = async (limit,offset) => {
         highscore: -1
     });
 
-    
-
     return users;
 }
 
@@ -50,13 +47,11 @@ const getUser = async(id) => {
 
     const user = await Usr.findById(id);
 
-    // await Usr.findOne({ _id: req.params.id })
-
     return user;
 }
 
 const getUserByMail = async(email) => {
-
+    
     const user = await Usr.findOne({ email: email });
 
     return user;
