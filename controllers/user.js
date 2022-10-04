@@ -2,7 +2,7 @@ require('mongoose');
 const Usr = require('../models/user');
 
 
-const addUser = async (name,lastname,email,isActive,password) => {
+const addUser = async (name,lastname,email,isActive,password,highscore) => {
 
     let existUser = await Usr.findOne({ email: email });
     console.log(existUser);
@@ -19,7 +19,8 @@ const addUser = async (name,lastname,email,isActive,password) => {
                 lastname:lastname,
                 email: email,
                 isActive:isActive,
-                password:cryptoPass
+                password:cryptoPass,
+                highscore: highscore
 
             }
         );
@@ -36,7 +37,11 @@ const addUser = async (name,lastname,email,isActive,password) => {
 
 const getAllUsers = async (limit,offset) => {
 
-    const users = await Usr.find({}).limit(limit).skip(offset);
+    const users = await Usr.find({}).limit(limit).skip(offset).sort({
+        highscore: -1
+    });
+
+    
 
     return users;
 }
@@ -64,6 +69,13 @@ const editUser = async(user) => {
     return result;
 }
 
+const editHighscore = async(id, highscore) => {
+
+    const result = await Usr.findByIdAndUpdate(id,{ highscore:highscore },{new:true});
+
+    return result;
+}
+
 const editRoles = async(roles,id) => {
 
     const result = await Usr.findByIdAndUpdate(id,{$set:{roles:roles}},{new:true});
@@ -78,4 +90,4 @@ const deleteUser = async(id) => {
     return result;
 }
 
-module.exports = { addUser, getAllUsers, getUser, getUserByMail, editUser, editRoles, deleteUser }
+module.exports = { addUser, getAllUsers, getUser, getUserByMail, editUser, editHighscore, editRoles, deleteUser }

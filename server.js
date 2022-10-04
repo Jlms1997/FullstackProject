@@ -30,7 +30,7 @@ app.get("/", (req, res) => {
 });
 
 // Get de todos los usuarios
-app.get("/users",Middleware.verify,async (req,res) =>{
+app.get("/users",async (req,res) =>{
 
   let limit = req.query.limit;
   let offset = req.query.offset;
@@ -87,8 +87,9 @@ app.post("/users",async (req,res) =>{
     let email = req.body.email;
     let isActive = req.body.isActive;
     let password = req.body.password;
+    let highscore = req.body.highscore;
     try{
-      const result = await UsrController.addUser(name,lastname,email,isActive,password);
+      const result = await UsrController.addUser(name,lastname,email,isActive,password,highscore);
       if(result){
         res.status(201).send("Usuario creado correctamente"); // 201
       }else{
@@ -96,8 +97,8 @@ app.post("/users",async (req,res) =>{
       }  
     }catch(error){
       res.status(500).send("Error al crear el usuario."); //500
-    }  
-    
+    }
+
 });
 
 // Modifico un usuario
@@ -135,6 +136,23 @@ app.delete("/users/:id", async(req,res) =>{
       res.status(500).send("Error")
     }
 });
+
+app.put("/users/:id/highscore",async (req,res) =>{
+    
+  const highscore = req.body.highscore;
+  //const user = { _id: req.params.id, ...req.body };
+  try{
+    
+    const result = await UsrController.editHighscore(req.params.id,highscore);
+    if(result){
+      res.status(200).json(result);
+    }else{
+      res.status(404).send("El usuario no existe.");
+    }  
+  }catch(error){  
+     res.status(500).send("Error");
+  } 
+})
 
 app.put("/users/:id/roles",async (req,res) =>{
     
