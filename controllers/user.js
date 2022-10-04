@@ -20,7 +20,7 @@ const addUser = async (name,lastname,email,isActive,password) => {
                 email: email,
                 isActive:isActive,
                 password:cryptoPass
-                
+
             }
         );
 
@@ -50,6 +50,13 @@ const getUser = async(id) => {
     return user;
 }
 
+const getUserByMail = async(email) => {
+
+    const user = await Usr.findOne({ email: email });
+
+    return user;
+}
+
 const editUser = async(user) => {
 
     const result = await Usr.findByIdAndUpdate(user._id,user,{new:true});
@@ -71,4 +78,4 @@ const deleteUser = async(id) => {
     return result;
 }
 
-module.exports = { addUser, getAllUsers, getUser, editUser, editRoles, deleteUser }
+module.exports = { addUser, getAllUsers, getUser, getUserByMail, editUser, editRoles, deleteUser }

@@ -63,6 +63,21 @@ app.get("/users/:id",async (req,res) =>{
 
 });
 
+// Get user by email
+
+app.get("/usersget/:email",async (req,res) =>{
+
+  let userEmail =  req.params.email;
+
+  
+    user = await UsrController.getUserByMail(userEmail);
+
+    res.status(200).json(user);
+
+  
+
+});
+
 // Creo un nuevo usuario
 
 app.post("/users",async (req,res) =>{
