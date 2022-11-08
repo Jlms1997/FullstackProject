@@ -88,3 +88,5 @@ function changeDirection(e) {
         velocityY = 0;
         }
 }
+
+export {update}
