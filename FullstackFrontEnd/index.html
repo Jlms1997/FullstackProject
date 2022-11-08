@@ -45,18 +45,18 @@
     <button class="open-button" onclick="showLogin()">Login</button>
 
     <div class="form-popup" id="login">
-    <form action="/action_page.php" class="form-container">
+    <div class="form-container">
         <h1>Login</h1>
 
         <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="email" required>
+        <input type="text" placeholder="Enter Email" name="email" id="email" required>
 
         <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
+        <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
 
-        <button type="submit" class="btn" onclick="login()">Login</button>
+        <button type="submit" class="btn" id="loginButton">Login</button>
         <button type="button" class="btn cancel" onclick="cancelLogin()">Close</button>
-    </form>
+    </div>
     </div>
 
 </body>

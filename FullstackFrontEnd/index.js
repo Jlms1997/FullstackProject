@@ -9,6 +9,7 @@ const fastButton = document.getElementById('fast');
 const leaderboardButton = document.getElementById('leaderboard');
 const gameOverSign = document.getElementById('gameOver');
 const firstInfo = document.getElementById('firstInfo');
+const loginButton = document.getElementById('loginButton')
 
 
 // Game settings
@@ -243,11 +244,29 @@ function cancelLogin() {
     document.getElementById("login").style.display = "none";
 }
 
-function login() {
+const login = ()=> {
+    const Password = document.getElementById("psw");
+    const Email = document.getElementById("email");
+    
+    const newPost = {
+        email: Email,
+        password: Password 
+    }
+
+    fetch(`http://localhost:5000/auth/login`,{
+        method: "POST",
+        body: JSON.stringify(newPost)
+    })
+    .then(response => response.json())
+    .then(data=>{
+        console.log(data);
+    });
+
+
     document.getElementById("login").style.display = "none";
 }
 
-
+loginButton.addEventListener('click', ()=>{login()});
 slowButton.addEventListener('click', ()=>{startGame("slow")});
 mediumButton.addEventListener('click', ()=>{startGame("medium")});
 fastButton.addEventListener('click', ()=>{startGame("fast")});
