@@ -198,6 +198,10 @@ closeRanking.addEventListener('click', () => {
     }
 )
 
+const updateHighScore = () =>{
+    
+}
+
 slowButton.addEventListener('click', ()=>{startGame("slow")});
 mediumButton.addEventListener('click', ()=>{startGame("medium")});
 fastButton.addEventListener('click', ()=>{startGame("fast")});
