@@ -90,7 +90,7 @@ const addFood = () => {
 }
 
 const gameOver = () => {
-    updateHighScore('633a35803e83daa1654a1488')
+    checkHighScore('633a35803e83daa1654a1488');
     gameOverSign.style.display = 'block';
     clearInterval(moveInterval)
     slowButton.disabled = false;
@@ -212,6 +212,27 @@ const updateHighScore = (userId) =>{
         }
     })
     .then(data => {console.log(data)})
+}
+
+const checkHighScore = (userId) =>{
+    let oldHighScore = 0;
+    fetch(`http://localhost:5000/users/${userId}`,{
+        headers:{
+            "content-type":"application/json"
+        }
+    })
+    .then(response => response.json())
+    .then(data=>{
+        console.log(data);
+        oldHighScore= document.getElementById("highscore");
+    });
+
+    if(oldHighScore < scoreBoard.innerText)
+    {   
+        updateHighScore('633a35803e83daa1654a1488');
+    }
+
+    
 }
 
 function showLogin() {
