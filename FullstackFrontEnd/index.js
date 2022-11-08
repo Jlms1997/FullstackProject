@@ -214,6 +214,19 @@ const updateHighScore = (userId) =>{
     .then(data => {console.log(data)})
 }
 
+function showLogin() {
+    document.getElementById("login").style.display = "block";
+}
+  
+function cancelLogin() {
+    document.getElementById("login").style.display = "none";
+}
+
+function login() {
+    document.getElementById("login").style.display = "none";
+}
+
+
 slowButton.addEventListener('click', ()=>{startGame("slow")});
 mediumButton.addEventListener('click', ()=>{startGame("medium")});
 fastButton.addEventListener('click', ()=>{startGame("fast")});
