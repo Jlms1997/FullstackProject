@@ -1,15 +1,92 @@
-body {
-    font-family: 'courier new', 'Courier New', Courier, monospace;
+* {
+    font-family: 'Share Tech Mono', monospace;
+}
+
+#board, .boardInfo {
+    max-width: 500px;
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+}
+
+#start, .boardInfo {
+    font-size: 25px;
+}
+
+#gameOver {
+    display: none;
+}
+
+.boardInfo {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+#slow {
+    background-color: #f35a69;
+    border: none;
+    color: white;
+}
+
+#medium {
+    background-color: #f35a69;
+    border: none;
+    color: white;
+}
+
+#fast {
+    background-color: #f35a69;
+    border: none;
+    color: white;
+}
+
+#leaderboard {
+    background-color: #b000f5;
+    border: none;
+    color: white;
+}
+
+#closeRanking {
+    display: flex;
+    background-color: #b000f5;
+    border: none;
+    color: white;
+}
+
+#ranking::backdrop{
+    background-color: rgba(0,0,0,.55);
+}
+
+#ranking{
+    max-width: 50ch;
+    border: 3px solid #b000f5;
+}
+
+#h2{
     text-align: center;
 }
-.popup {
-    background: rgb(32, 31, 31);
-    width: 100px;
-    height: 100px;
-    position: fixed;
-    top: 100px;
-    left: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+
+#scoreBoard {
+    display: inline-flex;
+}
+
+.square {
+    aspect-ratio: 1;
+}
+
+.emptySquare {
+    background-color: #6d71b5;
+}
+
+.snakeSquare {
+    background-color: #e3e773;
+    border: 1px solid #000;
+}
+
+.foodSquare {
+    background-color: #55e7e7;
+    border: 1px solid #000;
+}
