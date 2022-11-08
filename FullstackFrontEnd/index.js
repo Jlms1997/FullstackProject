@@ -90,6 +90,7 @@ const addFood = () => {
 }
 
 const gameOver = () => {
+    updateHighScore('633a35803e83daa1654a1488')
     gameOverSign.style.display = 'block';
     clearInterval(moveInterval)
     slowButton.disabled = false;
@@ -198,8 +199,19 @@ closeRanking.addEventListener('click', () => {
     }
 )
 
-const updateHighScore = () =>{
-    
+const updateHighScore = (userId) =>{
+    const newPost = {
+        highscore: scoreBoard.innerText
+    }
+
+    fetch(`http://localhost:5000/users/${userId}/highscore`,{
+        method:'PUT',
+        body: JSON.stringify(newPost),
+        headers:{
+            "content-type":"application/json"
+        }
+    })
+    .then(data => {console.log(data)})
 }
 
 slowButton.addEventListener('click', ()=>{startGame("slow")});
